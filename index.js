@@ -1,11 +1,10 @@
-// Import discord.js and dotenv
 const { Client, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require("discord.js");
 require("dotenv").config();
 
 // Create the bot client
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-// Define your slash commands
+// Define slash commands
 const commands = [
   new SlashCommandBuilder()
     .setName("howtogetkey")
@@ -13,7 +12,7 @@ const commands = [
     .toJSON()
 ];
 
-// Register commands in your server on startup
+// Register the commands in your server on startup
 const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
 (async () => {
@@ -33,25 +32,13 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "key") {
+  if (interaction.commandName === "howtogetkey") {
     await interaction.reply({
-      content: `Hey ${interaction.user}, We typically get some confused people, whether confused about scripts or getting the key
-
-HOW TO GET THE KEY
-
-Step1: Go to <#1443062455516270764>
-
-Step2: Press verify to get the role to receive the key
-
-Step3: Go to <#1443110895457665044> 
-
-Step4: You should see the key and you’re done!
-
-EXTRA: IF YOU DONT HAVE ACCESS TO <#1443110895457665044> CHECK TO SEE IF YOUR KEY VERIFIED!`,
+      content: `Hey ${interaction.user}, here’s how to get the key:\n• Join the game\n• Complete the tutorial\n• Redeem in settings`,
       allowedMentions: { users: [interaction.user.id] } // mentions the user
     });
   }
 });
 
-// Login the bot using your token from Replit Secrets
+// Log in the bot using token from environment
 client.login(process.env.DISCORD_TOKEN);
