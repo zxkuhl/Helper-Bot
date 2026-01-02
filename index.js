@@ -33,7 +33,7 @@ const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "howtogetkey") {
+  if (interaction.commandName === "key") {
     await interaction.reply({
       content: `Hey ${interaction.user}, We typically get some confused people, whether confused about scripts or getting the key
 
