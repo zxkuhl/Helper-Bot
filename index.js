@@ -35,7 +35,19 @@ client.on("interactionCreate", async (interaction) => {
 
   if (interaction.commandName === "howtogetkey") {
     await interaction.reply({
-      content: `Hey ${interaction.user}, here’s how to get the key:\n• Join the game\n• Complete the tutorial\n• Redeem in settings`,
+      content: `Hey ${interaction.user}, We typically get some confused people, whether confused about scripts or getting the key
+
+HOW TO GET THE KEY
+
+Step1: Go to <#1443062455516270764>
+
+Step2: Press verify to get the role to receive the key
+
+Step3: Go to <#1443110895457665044> 
+
+Step4: You should see the key and you’re done!
+
+EXTRA: IF YOU DONT HAVE ACCESS TO <#1443110895457665044> CHECK TO SEE IF YOUR KEY VERIFIED!`,
       allowedMentions: { users: [interaction.user.id] } // mentions the user
     });
   }
